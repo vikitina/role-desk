@@ -1,0 +1,295 @@
+@use "../../styles/tokens" as tokens;
+
+.page {
+  min-height: calc(100vh - 72px);
+
+  padding-block: 64px 96px;
+
+  background: var(--color-bg);
+}
+
+.container {
+  width: 100%;
+  max-width: tokens.$container-desktop;
+
+  margin-inline: auto;
+
+  padding-inline: tokens.$container-padding-desktop;
+}
+
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 32px;
+
+  padding-bottom: 40px;
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+
+  color: var(--color-text-muted);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+
+  color: var(--color-text);
+
+  font-size: tokens.$font-size-display-desktop;
+
+  font-weight: 700;
+  line-height: 1.05;
+
+  letter-spacing: -0.05em;
+}
+
+.description {
+  max-width: 600px;
+
+  margin: 20px 0 0;
+
+  color: var(--color-text-secondary);
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.content {
+  margin-top: 32px;
+}
+
+.table {
+  overflow: hidden;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  background: var(--color-surface);
+}
+
+.tableHeader,
+.tableRow {
+  display: grid;
+
+  grid-template-columns:
+    minmax(260px, 2fr) minmax(160px, 1fr) minmax(140px, 0.8fr) minmax(160px, 1fr);
+
+  align-items: center;
+}
+
+.tableHeader {
+  min-height: 48px;
+
+  padding-inline: 20px;
+
+  border-bottom: 1px solid var(--color-border);
+
+  color: var(--color-text-muted);
+
+  font-size: 10px;
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tableRow {
+  min-height: 76px;
+
+  padding: 12px 20px;
+
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tableRow:last-child {
+  border-bottom: 0;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+
+  color: var(--color-text-secondary);
+}
+
+.user>div:last-child {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+
+  min-width: 0;
+}
+
+.user strong {
+  overflow: hidden;
+
+  color: var(--color-text);
+
+  font-size: 13px;
+  font-weight: 600;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.user span {
+  overflow: hidden;
+
+  color: var(--color-text-muted);
+
+  font-family: var(--font-primary);
+
+  font-size: 10px;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.role {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.roleCode {
+  color: var(--color-text);
+
+  font-family: var(--font-primary);
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.roleName {
+  color: var(--color-text-muted);
+
+  font-size: 11px;
+}
+
+.date {
+  color: var(--color-text-secondary);
+
+  font-family: var(--font-primary);
+
+  font-size: 11px;
+}
+
+.state {
+  min-height: 180px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 32px;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+
+  color: var(--color-text-muted);
+
+  font-size: 13px;
+
+  text-align: center;
+}
+
+@media (max-width: tokens.$tablet) {
+  .container {
+    padding-inline: tokens.$container-padding-tablet;
+  }
+
+  .title {
+    font-size: tokens.$font-size-display-tablet;
+  }
+
+  .tableHeader,
+  .tableRow {
+    grid-template-columns:
+      minmax(220px, 2fr) minmax(140px, 1fr) 120px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-inline: tokens.$container-padding-mobile;
+  }
+
+  .title {
+    font-size: tokens.$font-size-display-mobile;
+  }
+
+  .header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .header>button {
+    width: 100%;
+  }
+
+  .table {
+    overflow: visible;
+
+    border: 0;
+
+    background: transparent;
+  }
+
+  .tableHeader {
+    display: none;
+  }
+
+  .tableRow {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 16px;
+
+    min-height: auto;
+
+    margin-bottom: 12px;
+    padding: 18px;
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+
+    background: var(--color-surface);
+  }
+
+  .tableRow:last-child {
+    margin-bottom: 0;
+  }
+
+  .role,
+  .date {
+    padding-left: 48px;
+  }
+}

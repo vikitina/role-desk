@@ -1,0 +1,121 @@
+@use "../../../styles/tokens" as tokens;
+
+.header {
+  border-bottom: 1px solid var(--color-border);
+
+  background: var(--color-bg);
+}
+
+.inner {
+  width: 100%;
+  max-width: tokens.$container-desktop;
+
+  min-height: 72px;
+
+  display: flex;
+  align-items: center;
+
+  padding-inline: tokens.$container-padding-desktop;
+
+  margin-inline: auto;
+}
+
+.logo {
+  color: var(--color-text);
+
+  font-family: var(--font-primary);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  margin-left: auto;
+}
+
+.navigation a {
+  color: var(--color-text-secondary);
+
+  font-size: 13px;
+
+  transition: color var(--transition-fast);
+}
+
+.navigation a:hover {
+  color: var(--color-text);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  margin-left: 32px;
+}
+
+.languageSwitcher {
+  display: flex;
+
+  overflow: hidden;
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.languageItem {
+  padding: 7px 9px;
+
+  border: 0;
+
+  background: transparent;
+  color: var(--color-text-muted);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.languageItem:hover {
+  background: var(--color-surface-hover);
+}
+
+.languageItemActive {
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+}
+
+@media (max-width: tokens.$tablet) {
+  .inner {
+    min-height: 64px;
+
+    padding-inline: tokens.$container-padding-tablet;
+  }
+
+  .navigation {
+    display: none;
+  }
+
+  .actions {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .inner {
+    padding-inline: tokens.$container-padding-mobile;
+  }
+}
+
+.profileLink {
+  color: var(--color-text) !important;
+  font-weight: 600;
+}

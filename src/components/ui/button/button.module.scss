@@ -1,0 +1,57 @@
+@use "../../../styles/tokens" as tokens;
+@use "../../../styles/mixins" as mixins;
+
+.button {
+  min-height: tokens.$button-height-mobile;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding-inline: 18px;
+
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+
+  @include mixins.button-text;
+
+  cursor: pointer;
+
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.primary {
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+}
+
+.secondary {
+  background: transparent;
+  color: var(--color-text);
+
+  border-color: var(--color-border-strong);
+}
+
+.secondary:hover {
+  background: var(--color-surface-hover);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--color-text-secondary);
+}
+
+@media (min-width: tokens.$tablet) {
+  .button {
+    min-height: tokens.$button-height-tablet;
+  }
+}

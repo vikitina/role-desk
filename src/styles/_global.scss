@@ -1,0 +1,80 @@
+@use "./tokens" as tokens;
+@use "./mixins" as mixins;
+
+
+body {
+  @include mixins.body;
+
+  min-width: 320px;
+
+  margin: 0;
+
+  background: var(--color-bg);
+  color: var(--color-text);
+
+  transition:
+    background-color var(--transition-normal),
+    color var(--transition-normal);
+}
+
+
+.app {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+.main {
+  flex: 1;
+}
+
+
+.container {
+  @include mixins.container;
+}
+
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-primary);
+}
+
+
+h1 {
+  @include mixins.h1;
+}
+
+
+h2 {
+  @include mixins.h2;
+}
+
+
+h3 {
+  @include mixins.h3;
+}
+
+
+p {
+  @include mixins.body;
+}
+
+
+.eyebrow {
+  @include mixins.caption;
+
+  margin: 0 0 tokens.$space-5;
+
+  color: var(--color-text-muted);
+}
