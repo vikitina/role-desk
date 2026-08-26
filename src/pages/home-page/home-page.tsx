@@ -18,44 +18,44 @@ import { getTranslation } from "../../i18n";
 import styles from "./home-page.module.scss";
 
 import { useAuthStore } from "../../stores/auth.store";
-import {supabase} from '../../lib/supabase'
+import { supabase } from '../../lib/supabase'
 import { useEffect } from "react";
 
 export default function HomePage() {
 
-const session = useAuthStore(
-  (state) => state.session
-);
+  const session = useAuthStore(
+    (state) => state.session
+  );
 
-const profile = useAuthStore(
-  (state) => state.profile
-);
+  const profile = useAuthStore(
+    (state) => state.profile
+  );
 
-const permissions = useAuthStore(
-  (state) => state.permissions
-);
+  const permissions = useAuthStore(
+    (state) => state.permissions
+  );
 
-useEffect(() => {
-  async function checkAuth() {
-    const {
-      data: { session },
-      error,
-    } = await supabase.auth.getSession();
+  useEffect(() => {
+    async function checkAuth() {
+      const {
+        data: { session },
+        error,
+      } = await supabase.auth.getSession();
 
-    console.log("SUPABASE SESSION:", session);
-    console.log("SUPABASE SESSION ERROR:", error);
+      console.log("SUPABASE SESSION:", session);
+      console.log("SUPABASE SESSION ERROR:", error);
 
-    const {
-      data: { user },
-      error: userError,
-    } = await supabase.auth.getUser();
+      const {
+        data: { user },
+        error: userError,
+      } = await supabase.auth.getUser();
 
-    console.log("SUPABASE USER:", user);
-    console.log("SUPABASE USER ERROR:", userError);
-  }
+      console.log("SUPABASE USER:", user);
+      console.log("SUPABASE USER ERROR:", userError);
+    }
 
-  checkAuth();
-}, []);
+    checkAuth();
+  }, []);
   const language = useLanguageStore((state) => state.language);
 
   const t = (key: string) => getTranslation(language, key);
@@ -123,19 +123,22 @@ useEffect(() => {
   return (
     <div className={styles.home}>
 
-<pre>
-  {JSON.stringify(
-    {
-      hasSession: Boolean(session),
-      userId: session?.user?.id ?? null,
-      email: session?.user?.email ?? null,
-      profile,
-      permissions,
-    },
-    null,
-    2
-  )}
-</pre>
+      {/*
+        <pre>
+          {JSON.stringify(
+            {
+              hasSession: Boolean(session),
+              userId: session?.user?.id ?? null,
+              email: session?.user?.email ?? null,
+              profile,
+              permissions,
+            },
+            null,
+            2
+          )}
+        </pre>
+      */}
+
       {/* HERO */}
       <section className={styles.hero}>
         <div className={styles.container}>
