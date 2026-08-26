@@ -1,75 +1,52 @@
-# React + TypeScript + Vite
+# RoleDesk
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+RoleDesk is a role-based access control (RBAC) dashboard built with React, TypeScript, Zustand and Supabase.
 
-Currently, two official plugins are available:
+The project demonstrates authentication, role management, permission-based access control, protected routes and backend authorization through Supabase Edge Functions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The main goal of the project is to demonstrate how a frontend application can implement a structured and scalable authorization system rather than relying only on UI-level access restrictions.
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Live Demo
 
-## Expanding the ESLint configuration
+**Live application:**  
+https://YOUR-APP-URL.vercel.app
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Repository:**  
+https://github.com/vikitina/role-desk
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+> The live demo URL will be added after deployment.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Features
 
-```
+### Authentication
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- User registration
+- User login
+- User logout
+- Persistent Supabase sessions
+- Authentication state management
+- Protected application routes
+- Automatic redirection for unauthenticated users
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Role-Based Access Control
 
-```
+RoleDesk uses a permission-based RBAC model.
+
+Users are assigned roles, and roles receive permissions.
+
+The authorization model is:
+
+```text
+User
+  ↓
+Profile
+  ↓
+Role
+  ↓
+Permissions
