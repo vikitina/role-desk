@@ -73,7 +73,9 @@ export default function RoleDetailsPage() {
       try {
         setLoading(true);
         setError(null);
-
+        if (!roleId) {
+          return;
+        }
         const data =
           await getRoleDetails(
             roleId

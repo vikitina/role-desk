@@ -17,23 +17,23 @@ import { getTranslation } from "../../i18n";
 
 import styles from "./home-page.module.scss";
 
-import { useAuthStore } from "../../stores/auth.store";
+// import { useAuthStore } from "../../stores/auth.store";
 import { supabase } from '../../lib/supabase'
 import { useEffect } from "react";
 
 export default function HomePage() {
 
-  const session = useAuthStore(
-    (state) => state.session
-  );
+  // const session = useAuthStore(
+  //   (state) => state.session
+  // );
 
-  const profile = useAuthStore(
-    (state) => state.profile
-  );
+  // const profile = useAuthStore(
+  //   (state) => state.profile
+  // );
 
-  const permissions = useAuthStore(
-    (state) => state.permissions
-  );
+  // const permissions = useAuthStore(
+  //   (state) => state.permissions
+  // );
 
   useEffect(() => {
     async function checkAuth() {

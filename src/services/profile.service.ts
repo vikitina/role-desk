@@ -41,5 +41,16 @@ export async function getCurrentProfile(): Promise<UserProfile> {
     throw error;
   }
 
-  return data as UserProfile;
+  const role = Array.isArray(data.role)
+    ? data.role[0]
+    : data.role;
+
+  return {
+    id: data.id,
+    role_id: data.role_id,
+    display_name: data.display_name,
+    created_at: data.created_at,
+    updated_at: data.updated_at,
+    role,
+  } as UserProfile;
 }

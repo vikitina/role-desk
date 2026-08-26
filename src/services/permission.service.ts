@@ -18,7 +18,6 @@ export async function getCurrentUserPermissions(): Promise<
     throw new Error("User is not authenticated");
   }
 
-  // 1. Получаем профиль пользователя
   const {
     data: profile,
     error: profileError,
@@ -32,7 +31,6 @@ export async function getCurrentUserPermissions(): Promise<
     throw profileError;
   }
 
-  // 2. Получаем permissions роли
   const {
     data: rolePermissions,
     error: rolePermissionsError,
@@ -54,7 +52,21 @@ export async function getCurrentUserPermissions(): Promise<
     throw rolePermissionsError;
   }
 
-  return rolePermissions
-    .map((item) => item.role_desk_permissions)
-    .filter(Boolean) as Permission[];
+  const permissions: Permission[] = [];
+
+  for (const item of rolePermissions) {
+    const permission =
+      item.role_desk_permissions;
+
+    if (
+      permission &&
+      !Array.isArray(permission)
+    ) {
+      permissions.push(
+        permission as Permission
+      );
+    }
+  }
+
+  return permissions;
 }
